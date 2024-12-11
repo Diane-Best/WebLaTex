@@ -48,6 +48,17 @@
 	"latex-workshop.latex.pdfWatch.delay": 500,
 	//"latex-workshop.latex.watch.delay": 500, // Deprecated. See here: https://github.com/sanjib-sen/WebLaTex/issues/8
 	"latex-workshop.codespaces.portforwarding.openDelay": 20000,
+	// 鼠标悬停，预览公式时，支持 boldsymbol 宏
+	"latex-workshop.hover.preview.mathjax.extensions": [
+	"boldsymbol"
+	],
+	"latex-workshop.hover.preview.enabled": true,
+	// 是否启用 IntelliSense，自动补全引用的包中的环境和命令
+	"latex-workshop.intellisense.package.enabled": true,
+	// 默认编译引擎为上次使用的
+	"latex-workshop.latex.recipe.default": "lastUsed",
+	// 预览复杂公式，使用时需要通过 command palette (命令面板) 打开
+	"latex-workshop.mathpreviewpanel.cursor.enabled": true,
 	"grammarly.files.include": [
 		"**/*.tex"
 	],
