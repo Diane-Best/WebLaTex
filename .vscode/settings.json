@@ -1,4 +1,68 @@
 {
+	"latex-workshop.latex.outDir": "./PDF",
+	"latex-workshop.latex.tools": [
+		{
+			"name": "pdflatex",
+			"command": "pdflatex",
+			"args": [
+				"-synctex=1",
+				"-interaction=nonstopmode",
+				"-file-line-error",
+                "-output-directory=%OUTDIR%",
+				"%DOCFILE%"
+			]
+		},
+		{
+			"name": "xelatex",
+			"command": "xelatex",
+			"args": [
+				"-synctex=1",
+				"-interaction=nonstopmode",
+				"-file-line-error",
+                "-output-directory=%OUTDIR%",
+				"%DOCFILE%"
+			]
+		},
+		{
+			"name": "bibtex",
+			"command": "bibtex",
+			"args": [
+				"%DOCFILE%"
+			]
+		}
+	],
+	"latex-workshop.latex.recipes": [
+		{
+			"name": "xelatex",
+			"tools": [
+				"xelatex"
+			],
+		},
+		{
+			"name": "pdflatex",
+			"tools": [
+				"pdflatex"
+			]
+		},
+		{
+			"name": "xe->bib->xe->xe",
+			"tools": [
+				"xelatex",
+				"bibtex",
+				"xelatex",
+				"xelatex"
+			]
+		},
+		{
+			"name": "pdf->bib->pdf->pdf",
+			"tools": [
+				"pdflatex",
+				"bibtex",
+				"pdflatex",
+				"pdflatex"
+			]
+		}
+	],
 	"latex-workshop.latex.clean.fileTypes": [
 		"*.aux",
 		"*.bbl",
@@ -15,48 +79,35 @@
 		"*.glg",
 		"*.glo",
 		"*.gls",
+		"*.ist",
 		"*.fls",
 		"*.log",
-		"*.fdb_latexmk",
-		"*.snm",
-		"*.synctex(busy)",
-		"*.synctex.gz(busy)",
-		"*.nav",
-		"*.vrb",
-		"*.gz", // Added Manually
-		"*.bcf", // Added Manually
-		"*.nlo", // Added Manually
-		"*.run.xml" // Added Manually
+		"*.fdb_latexmk"
 	],
-	// Edit the following property to change export directory
-	"latex-workshop.latex.outDir": "./PDF",
-	"latex-workshop.latex.autoClean.run": "onBuilt",
-	"latex-workshop.latex.build.forceRecipeUsage": false,
-	"latex-workshop.synctex.afterBuild.enabled": true,
+	//tex文件浏览器，可选项为"none" "browser" "tab" "external"
 	"latex-workshop.view.pdf.viewer": "tab",
-	"latex-workshop.latex.clean.subfolder.enabled": true,
-	"latex-workshop.latex.magic.args": [
-		"-output-directory=PDF", // to change the output directory
-		"%DOC%"
-	],
-	// Remove / comment the next 3 lines to remove dark view for pdf
-	"latex-workshop.view.pdf.color.dark.pageColorsBackground": "#171717", // For Dark Viewwer
-	"latex-workshop.latex.autoBuild.run": "never",
-	"latex-workshop.view.pdf.color.dark.pageColorsForeground": "#FFFFFF", // For Dark Viewer
-	"latex-workshop.view.pdf.color.dark.backgroundColor": "#171717", // For Dark Viewer
-	"editor.formatOnSave": true,
-	"latex-workshop.latex.pdfWatch.delay": 500,
-	//"latex-workshop.latex.watch.delay": 500, // Deprecated. See here: https://github.com/sanjib-sen/WebLaTex/issues/8
+	//自动编译tex文件
+	"latex-workshop.latex.autoBuild.run": "onSave",
+	//显示内容菜单：（1）编译文件；（2）定位游标
+	"latex-workshop.showContextMenu": true,
+	//显示错误
+	"latex-workshop.message.error.show": false,
+	//显示警告
+	"latex-workshop.message.warning.show": false,
+	//从使用的包中自动补全命令和环境
+	"latex-workshop.intellisense.package.enabled": true,
+	//设置为never，为不清除辅助文件
+	"latex-workshop.latex.autoClean.run": "onBuilt",
+	//设置vscode编译tex文档时的默认编译链
+	"latex-workshop.latex.recipe.default": "lastUsed",
+	// 用于反向同步的内部查看器的键绑定。ctrl/cmd +点击(默认)或双击
+	"latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
 	"latex-workshop.codespaces.portforwarding.openDelay": 20000,
 	// 鼠标悬停，预览公式时，支持 boldsymbol 宏
 	"latex-workshop.hover.preview.mathjax.extensions": [
-	"boldsymbol"
+		"boldsymbol"
 	],
 	"latex-workshop.hover.preview.enabled": true,
-	// 是否启用 IntelliSense，自动补全引用的包中的环境和命令
-	"latex-workshop.intellisense.package.enabled": true,
-	// 默认编译引擎为上次使用的
-	"latex-workshop.latex.recipe.default": "lastUsed",
 	// 预览复杂公式，使用时需要通过 command palette (命令面板) 打开
 	"latex-workshop.mathpreviewpanel.cursor.enabled": true,
 	"grammarly.files.include": [
